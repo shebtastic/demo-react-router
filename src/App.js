@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import styled from "styled-components";
 
-function App() {
+function App({className}) {
+  const [page, setPage] = useState("home")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={className}>
+      <NavBar activePage={page} goTo={setPage} />
+      <main>
+        {page === "home" && <Home />}
+        {page === "about" && <About />}
+        {page === "contact" && <Contact />}
+      </main>
     </div>
   );
 }
 
-export default App;
+const StyledApp = styled(App)`
+  text-align: center;
+`
+
+export default StyledApp;
