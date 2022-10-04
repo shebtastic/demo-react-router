@@ -1,29 +1,22 @@
 import styled from "styled-components";
 
-function NavBar({activePage, goTo}) {
+import {NavLink} from "react-router-dom"
+
+function NavBar() {
   return (
     <nav>
-      <NavLink
-        type="button"
-        className={activePage === "home" ? "active" : ""}
-        onClick={() => goTo("home")}
-      >Home</NavLink>
-      <NavLink
-        type="button"
-        className={activePage === "about" ? "active" : ""}
-        onClick={() => goTo("about")}
-      >About</NavLink>
-      <NavLink
-        type="button"
-        className={activePage === "contact" ? "active" : ""}
-        onClick={() => goTo("contact")}
-      >Contact</NavLink>
+      <StyledNavLink to="/" end>Home</StyledNavLink>
+      <StyledNavLink to="/about">About</StyledNavLink>
+      <StyledNavLink to="/contact">Contact</StyledNavLink>
     </nav>
   )
 }
 
-const NavLink = styled.button`
+const StyledNavLink = styled(NavLink)`
   transition: border-bottom-color 500ms, background-color 500ms;
+
+  text-decoration: none;
+  color: black;
   
   border: none;
   background: white;

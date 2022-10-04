@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import {createGlobalStyle} from "styled-components";
 
+import {BrowserRouter} from "react-router-dom"
+
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
@@ -22,7 +24,9 @@ const GlobalStyles = createGlobalStyle`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <App />
+    <BrowserRouter>
+      <GlobalStyles />
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
