@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import {Routes, Route} from "react-router-dom"
 import Layout from "./components/Layout";
-import AboutDetails from "./components/AboutDetails";
+import AboutDetails from "./pages/AboutDetails";
 
 function App({className}) {
 
