@@ -1,14 +1,14 @@
 // import {useEffect, useState} from "react";
-import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import styled from "styled-components";
 
-import {Routes, Route, useNavigate} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
+import Layout from "./components/Layout";
+import AboutDetails from "./components/AboutDetails";
 
 function App({className}) {
-  const navigate = useNavigate()
 
   // useEffect(() => {
   //   const tid = setTimeout(() => navigate("/"), 5000)
@@ -17,15 +17,17 @@ function App({className}) {
 
   return (
     <div className={className}>
-      <NavBar />
-      <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<Layout>test</Layout>}>
+            <Route index element={<Home />} />
+            <Route path="about">
+              <Route index element={<About />} />
+              <Route path=":name/:job" element={<AboutDetails />} />
+              {/** localhost:3000/about/ernst/coach */}
+            </Route>
+            <Route path="contact" element={<Contact />} />
+          </Route>
         </Routes>
-      </main>
-      <button onClick={() => {navigate("/")}}>Send me home!</button>
     </div>
   );
 }
